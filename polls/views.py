@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404, render
 
 from django.http import HttpResponse, HttpResponseRedirect
 
-from .models import Choice, Question
+from .models import Choice, Question, Deepthoughts
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
@@ -53,3 +53,27 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+
+class DeepthoughtsView(generic.CreateView):
+    model = Deepthoughts
+    template_name = 'polls/deepthoughts.html'
+    fields = ['text']
+    
+class ListView(generic.ListView):
+    context_object_name = 'latest_thoughts_list'
+    template_name = 'polls/list.html'
+    def get_queryset(self):
+        return Deepthoughts.objects.all()
+
+def submit(request):
+    d_text = request.POST.get('content')
+    if d_text == '':
+        return render(request, 'polls/deepthoughts.html')
+    tmp = Deepthoughts(text = d_text)
+    tmp.save()
+    return HttpResponseRedirect(reverse('polls:list'))
+
+
+
+

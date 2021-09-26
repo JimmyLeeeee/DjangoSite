@@ -1,0 +1,25 @@
+<ul class="nav nav-pills">
+        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Polls</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Deepthoughts</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+      </ul>
+<center>
+<h1>deepthoughts</h1>
+<form action = "{% url 'polls:submit' %}" method = "POST"> 
+    {% csrf_token %}
+    <label>Content:</label><br>
+    <input type="text" name = "content"><br><br>
+    <input type="submit" value="Submit">
+</form>
+</center>
+<div class="col-md-4 d-flex align-items-center">
+    <span class="text-muted"> Li</span>
+</div>
+
+
+
+
+
+

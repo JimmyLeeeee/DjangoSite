@@ -1,14 +1,23 @@
+<ul class="nav nav-pills">
+        <li class="nav-item">< a href="#" class="nav-link active" aria-current="page">Home</ a></li>
+        <li class="nav-item">< a href="#" class="nav-link">Polls</ a></li>
+        <li class="nav-item">< a href="#" class="nav-link">Deepthoughts</ a></li>
+        <li class="nav-item">< a href="#" class="nav-link">FAQs</ a></li>
+        <li class="nav-item">< a href="#" class="nav-link">About</ a></li>
+      </ul>
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
-        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+        <li>< a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</ a></li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No polls are available.</p>
+    <p>No polls are available.</p >
 {% endif %}
 
+<div class="col-md-4 d-flex align-items-center">
+    <span class="text-muted"> Li</span>
+</div>
